@@ -1,0 +1,45 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RandomG.CategoryPage"
+             BackgroundImageSource="catbg.gif">
+    <AbsoluteLayout>
+        <!-- Logo ด้านซ้ายบน -->
+        <Image Source="logo.png"
+               WidthRequest="50"
+               HeightRequest="50"
+               AbsoluteLayout.LayoutBounds="0,10,50,50"
+                />
+
+        <Grid AbsoluteLayout.LayoutBounds="0,0,1,1"
+              AbsoluteLayout.LayoutFlags="All">
+            <BoxView Color="Black" Opacity="0.5" />
+            <VerticalStackLayout Padding="20" VerticalOptions="Center">
+                <CollectionView x:Name="CategoriesCollectionView" ItemsSource="{Binding Categories}" SelectionMode="Single"
+                                SelectionChanged="OnCategorySelected">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Margin="5">
+                                <Label Text="{Binding Name}" 
+                                       FontSize="18" 
+                                       Padding="15" 
+                                       FontFamily="AsusRogRegular" 
+                                       HorizontalOptions="Center" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Button Text="-GO TO GAME-" 
+                        FontSize="18" 
+                        Margin="10" 
+                        FontFamily="AsusRogRegular"  
+                        TextColor="LightGreen"
+                        BorderColor="MediumPurple"
+                        BackgroundColor="Transparent"
+                        BorderWidth="2" CornerRadius="0"
+                        Clicked="OnNavigateToGamePageClicked" 
+                        IsEnabled="{Binding SelectedCategory}" />
+            </VerticalStackLayout>
+        </Grid>
+    </AbsoluteLayout>
+</ContentPage>

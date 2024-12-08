@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RandomG.GamePage"
+             BackgroundImageSource="ro.png">
+
+    <AbsoluteLayout>
+        <!-- โลโก้ที่มุมซ้ายบน -->
+        <Image Source="logoo.png"
+               WidthRequest="50"
+               HeightRequest="50"
+               AbsoluteLayout.LayoutBounds="0,10,50,50"
+                />
+
+        <Grid AbsoluteLayout.LayoutBounds="0,0,1,1"
+              AbsoluteLayout.LayoutFlags="All">
+            <BoxView Color="Black" Opacity="0.5" />
+            <VerticalStackLayout VerticalOptions="Center">
+                <Label Text="เล่นไรๆ ?" 
+                       FontFamily="SOVKhianKhao"
+                       FontSize="24" 
+                       HorizontalOptions="Center" />
+
+                <!-- CollectionView with Multi-Select -->
+                <CollectionView x:Name="GamesCollectionView"
+                                SelectionMode="Multiple"
+                                HeightRequest="300">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <VerticalStackLayout Padding="10">
+                                <Label Text="{Binding Name}" 
+                                       TextColor="LightGreen"
+                                       FontSize="18" 
+                                       FontAttributes="Bold" />
+                                <Label Text="{Binding CategoriesID}" 
+                                       FontSize="14" 
+                                       TextColor="Aqua" />
+                                <Image Source="{Binding Image}"
+                                       HeightRequest="100"
+                                       Aspect="AspectFit"
+                                       Margin="5,0,0,0 " />
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- ProgressBar for Animation -->
+                <ProgressBar x:Name="ShuffleProgressBar" 
+                             ProgressColor="DarkRed"
+                             IsVisible="False" 
+                             Progress="0" 
+                             HeightRequest="10" 
+                             HorizontalOptions="FillAndExpand" />
+
+                <Button Text="จุ่ม ๆๆๆ ตงนี้ ๆๆ"
+                        FontFamily="SOVKhianKhao"
+                        TextColor="Snow"
+                        BorderColor="black"
+                        BackgroundColor="Transparent"
+                        BorderWidth="2" CornerRadius="0"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        Clicked="OnRandomGameWithAnimationClicked" 
+                        />
+
+                <Label x:Name="RandomGameLabel" 
+                       FontSize="18" 
+                       FontAttributes="Bold" 
+                       HorizontalOptions="Center" 
+                       TextColor="red" />
+            </VerticalStackLayout>
+        </Grid>
+    </AbsoluteLayout>
+</ContentPage>

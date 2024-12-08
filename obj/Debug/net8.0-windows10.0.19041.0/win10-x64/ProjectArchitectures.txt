@@ -1,0 +1,1 @@
+C:\Users\Kanta\source\repos\RandomG\RandomG.csproj;x64
